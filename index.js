@@ -11,11 +11,9 @@ app.use(bodyParser.json())
 
 
 // * MongoDB connection to local server
-mongoose.connect('mongodb://localhost:27017/myfin_banking_app',{
-    useNewUrlParser:true,
-    useUnifiedTopology:true
-}).then(() => console.log('MongoDB connection has been successfully established'))
-.catch(error => console.log('error occured: ',error.message))
+mongoose.connect('mongodb://localhost:27017/myfin_banking_app')
+    .then(() => console.log('MongoDB connection has been successfully established'))
+    .catch(error => console.log('error occured: ',error.message))
 
 // Todo: all the routes should be listed below
 
