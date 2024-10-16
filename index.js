@@ -1,13 +1,19 @@
+require('dotenv').config()
 // * Importing the essential libraries for the application
 const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
 const  bodyParser = require('body-parser')
 
+const verifyToken = require('./middlewares/tokenVerify')
+
+const authRoutes = require('./controllers/authController')
+
 // * Initializing the express application
 const app = express()
 app.use(cors());
 app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended:true}))
 
 
 // * MongoDB connection to local server
@@ -17,6 +23,7 @@ mongoose.connect('mongodb://localhost:27017/myfin_banking_app')
 
 // Todo: all the routes should be listed below
 
+app.use('/api/auth',authRoutes)
 
 // * Starting the express server
 const port = process.env.PORT || 3002
