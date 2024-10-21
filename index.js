@@ -31,6 +31,7 @@ mongoose
 app.use("/api/auth", authRoutes);
 app.use("/api/account", verifyToken, accountRoutes);
 app.use("/api/transaction", verifyToken, transactionRoutes);
+app.use("/api/admin", verifyToken, adminRoutes);
 
 // * Starting the express server
 const port = process.env.PORT || 3002;
